@@ -26,8 +26,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-	  with:
-	    fetch-depth: 0
+      with:
+        fetch-depth: 0
 
     - name: Auto Merge
       uses: objt-va/auto_branch_merge@master
