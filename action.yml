@@ -34,9 +34,6 @@ inputs:
     description: 'Environment variable containing the token to use for push'
     required: false
     default: 'GITHUB_TOKEN'
-  commit_message:
-    description: 'Merge commit message'
-    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
