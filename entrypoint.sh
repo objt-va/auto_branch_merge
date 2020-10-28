@@ -13,7 +13,6 @@ echo "    - allow_forks = $INPUT_ALLOW_FORKS"
 echo "    - user_name = $INPUT_USER_NAME"
 echo "    - user_email = $INPUT_USER_EMAIL"
 echo "    - push_token = $INPUT_PUSH_TOKEN = ${!INPUT_PUSH_TOKEN}"
-echo "    - commit_message = $INPUT_COMMIT_MESSAGE"
 echo
 
 if [[ $INPUT_ALLOW_FORKS != "true" ]]; then
