@@ -13,6 +13,7 @@ echo "    - allow_forks = $INPUT_ALLOW_FORKS"
 echo "    - user_name = $INPUT_USER_NAME"
 echo "    - user_email = $INPUT_USER_EMAIL"
 echo "    - push_token = $INPUT_PUSH_TOKEN = ${!INPUT_PUSH_TOKEN}"
+echo "    - commit_message = '$INPUT_COMMIT_MESSAGE'"
 echo
 
 if [[ $INPUT_ALLOW_FORKS != "true" ]]; then
@@ -62,7 +63,7 @@ echo
 set -o xtrace
 
 # Do the merge
-git merge $FF_MODE --no-edit $INPUT_SOURCE_BRANCH
+git merge $FF_MODE --no-edit $INPUT_SOURCE_BRANCH -m "$INPUT_COMMIT_MESSAGE"
 
 # Pull lfs if enabled
 if [[ $INPUT_GIT_LFS == "true" ]]; then
