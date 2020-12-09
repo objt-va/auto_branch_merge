@@ -25,11 +25,11 @@ inputs:
   user_name:
     description: 'User name for git commits'
     required: false
-    default: 'Auto Merge Action'
+    default: 'github-actions[bot]'
   user_email:
     description: 'User email for git commits'
     required: false
-    default: 'actions@github.com'
+    default: '41898282+github-actions[bot]@users.noreply.github.com'
   push_token:
     description: 'Environment variable containing the token to use for push'
     required: false
