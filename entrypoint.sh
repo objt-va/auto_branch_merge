@@ -7,18 +7,11 @@ echo "  'Auto Merge Action' is using the following input:"
 echo "    - source_branch = '$INPUT_SOURCE_BRANCH'"
 echo "    - target_branch = '$INPUT_TARGET_BRANCH'"
 echo "    - allow_ff = $INPUT_ALLOW_FF"
-echo "    - allow_git_lfs = $INPUT_GIT_LFS"
 echo "    - ff_only = $INPUT_FF_ONLY"
 echo "    - user_name = $INPUT_USER_NAME"
 echo "    - user_email = $INPUT_USER_EMAIL"
-echo "    - push_token = $INPUT_PUSH_TOKEN = ${!INPUT_PUSH_TOKEN}"
 echo "    - commit_message = '$INPUT_COMMIT_MESSAGE'"
 echo
-
-if [[ -z "${!INPUT_PUSH_TOKEN}" ]]; then
-  echo "Set the ${INPUT_PUSH_TOKEN} env variable."
-  exit 1
-fi
 
 FF_MODE="--no-ff"
 if [[ "$INPUT_ALLOW_FF" == "true" ]]; then
@@ -53,11 +46,6 @@ set -o xtrace
 
 # Do the merge
 git merge $FF_MODE --no-edit $INPUT_SOURCE_BRANCH -m "$INPUT_COMMIT_MESSAGE"
-
-# Pull lfs if enabled
-if [[ $INPUT_GIT_LFS == "true" ]]; then
-  git lfs pull
-fi
 
 # Push the branch
 git push origin $INPUT_TARGET_BRANCH
