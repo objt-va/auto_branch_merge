@@ -64,7 +64,7 @@ echo
 set -o xtrace
 
 # Do the merge
-git merge $FF_MODE --no-edit $INPUT_SOURCE_BRANCH -S -m "$INPUT_COMMIT_MESSAGE"
+git merge $FF_MODE --no-edit $INPUT_SOURCE_BRANCH -m "$INPUT_COMMIT_MESSAGE"
 
 # Pull lfs if enabled
 if [[ $INPUT_GIT_LFS == "true" ]]; then
