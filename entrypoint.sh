@@ -41,6 +41,8 @@ fi
 
 #git config --global user.name "$INPUT_USER_NAME"
 #git config --global user.email "$INPUT_USER_EMAIL"
+git config --local user.name "github-actions[bot]"
+git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
 set -o xtrace
 
