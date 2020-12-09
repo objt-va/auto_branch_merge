@@ -19,6 +19,7 @@ echo
 if [[ $INPUT_ALLOW_FORKS != "true" ]]; then
   URI=https://api.github.com
   API_HEADER="Accept: application/vnd.github.v3+json"
+  echo "${URI}/repos/$GITHUB_REPOSITORY"
   pr_resp=$(curl -X GET -s -H "${API_HEADER}" "${URI}/repos/$GITHUB_REPOSITORY")
   if [[ "$(echo "$pr_resp" | jq -r .fork)" != "false" ]]; then
     echo "Auto merge action is disabled for forks (use the 'allow_forks' option to enable it)."
@@ -39,10 +40,8 @@ if [[ "$INPUT_ALLOW_FF" == "true" ]]; then
   fi
 fi
 
-#git config --global user.name "$INPUT_USER_NAME"
-#git config --global user.email "$INPUT_USER_EMAIL"
-git config --local user.name "github-actions[bot]"
-git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+git config --local user.name "$INPUT_USER_NAME"
+git config --local user.email "$INPUT_USER_EMAIL"
 
 set -o xtrace
 
